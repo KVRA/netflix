@@ -4,9 +4,11 @@ import { BsStarFill } from 'react-icons/bs';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import { BASE_IMG_URL_500w } from '@/lib/repository/themoviesdb/movieApi';
+import { APIResponseMovieByID } from '@/lib/repository/themoviesdb/themoviedb';
 
 import { useUserContext } from '../../../../context/userContext';
-const Card = ({ data }) => {
+
+const Card = ({ data }: { data: APIResponseMovieByID }) => {
   const { setIsModal } = useUserContext();
   const { setModalData } = useUserContext();
   // or use tailwind hover group this is just to show react events control :P

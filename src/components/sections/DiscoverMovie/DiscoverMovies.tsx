@@ -12,8 +12,8 @@ const DiscoverMovies = ({
   movieList1,
   movieList2,
 }: {
-  movieList1?: APIResponseMovieByID[];
-  movieList2?: APIResponseMovieByID[];
+  movieList1: APIResponseMovieByID[];
+  movieList2: APIResponseMovieByID[];
 }) => {
   if (!movieList1) {
     return (
