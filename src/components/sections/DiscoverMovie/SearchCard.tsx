@@ -1,16 +1,15 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { BsPlayFill } from 'react-icons/bs';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import { BASE_IMG_URL } from '@/lib/repository/themoviesdb/movieApi';
+import { APIResponseMovieByID } from '@/lib/repository/themoviesdb/themoviedb';
 
 import { useUserContext } from '../../../../context/userContext';
-const SearchCard = ({ data }) => {
+const SearchCard = ({ data }: { data: APIResponseMovieByID }) => {
   const { setIsModal } = useUserContext();
   const { setModalData } = useUserContext();
-  const router = useRouter();
   const [isHover, setIsHover] = useState(false);
   const [imageError, setImageError] = useState(false);
   const fallBackSrc =

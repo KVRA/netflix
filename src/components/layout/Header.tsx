@@ -8,7 +8,6 @@ function Header() {
   const router = useRouter();
   const [menu, setMenu] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [userHandle, setUserHandle] = useState(false);
   const [down, setDown] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchText, setSearchText] = useState('');

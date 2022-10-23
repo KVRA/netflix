@@ -76,6 +76,7 @@ module.exports = {
       },
     ],
     //#endregion  //*======== Import Sort ===========
+    '@next/next/no-img-element': 'off',
   },
   globals: {
     React: true,

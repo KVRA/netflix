@@ -5,13 +5,20 @@ import React, { useEffect } from 'react';
 import 'aos/dist/aos.css';
 
 import { APIkey, movieApi } from '@/lib/repository/themoviesdb/movieApi';
+import { APIResponseMovieByID } from '@/lib/repository/themoviesdb/themoviedb';
 
 import Header from '@/components/layout/Header';
 import Modal from '@/components/Modal';
 import Banner from '@/components/sections/Banner';
 import DiscoverMovies from '@/components/sections/DiscoverMovie/DiscoverMovies';
 
-const Movies = ({ movieList1, movieList2 }) => {
+const Movies = ({
+  movieList1,
+  movieList2,
+}: {
+  movieList1: APIResponseMovieByID[];
+  movieList2: APIResponseMovieByID[];
+}) => {
   useEffect(() => {
     AOS.init();
   }, []);

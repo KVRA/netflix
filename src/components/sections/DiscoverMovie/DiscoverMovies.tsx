@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import Slider from 'react-slick/lib/slider';
+import Slider from 'react-slick';
 
 import { APIResponseMovieByID } from '@/lib/repository/themoviesdb/themoviedb';
 
