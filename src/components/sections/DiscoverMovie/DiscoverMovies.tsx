@@ -1,33 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import Slider from 'react-slick/lib/slider';
 
-import { APIkey, movieApi } from '@/lib/repository/themoviesdb/movieApi';
 import { APIResponseMovieByID } from '@/lib/repository/themoviesdb/themoviedb';
 
 import Card from './Card';
 import SearchCard from './SearchCard';
 import { settings } from './settings';
 
-const DiscoverMovies = () => {
-  const [movieList1, setMovieList1] = useState<APIResponseMovieByID[]>([]);
-  const [movieList2, setMovieList2] = useState<APIResponseMovieByID[]>([]);
-  useEffect(() => {
-    movieApi
-      .get(
-        `/discover/movie?api_key=${APIkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
-      )
-      .then((res) => {
-        setMovieList1(res.data.results);
-      });
-    movieApi
-      .get(
-        `discover/movie?api_key=${APIkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020&with_watch_monetization_types=flatrate`
-      )
-      .then((res) => {
-        setMovieList2(res.data.results);
-      });
-  }, []);
+const DiscoverMovies = ({
+  movieList1,
+  movieList2,
+}: {
+  movieList1?: APIResponseMovieByID[];
+  movieList2?: APIResponseMovieByID[];
+}) => {
   if (!movieList1) {
     return (
       <div>

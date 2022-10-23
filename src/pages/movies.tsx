@@ -4,12 +4,14 @@ import React, { useEffect } from 'react';
 
 import 'aos/dist/aos.css';
 
+import { APIkey, movieApi } from '@/lib/repository/themoviesdb/movieApi';
+
 import Header from '@/components/layout/Header';
 import Modal from '@/components/Modal';
 import Banner from '@/components/sections/Banner';
 import DiscoverMovies from '@/components/sections/DiscoverMovie/DiscoverMovies';
 
-const Movies = () => {
+const Movies = ({ movieList1, movieList2 }) => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -33,11 +35,29 @@ const Movies = () => {
       <div className='overflow-x-hidden bg-black'>
         <Header />
         <Banner />
-        <DiscoverMovies />
+        <DiscoverMovies movieList1={movieList1} movieList2={movieList2} />
         <Modal />
       </div>
     </>
   );
 };
+
+export async function getStaticProps() {
+  const movieList1 = await movieApi.get(
+    `/discover/movie?api_key=${APIkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
+  );
+
+  const movieList2 = await movieApi.get(
+    `discover/movie?api_key=${APIkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020&with_watch_monetization_types=flatrate`
+  );
+
+  return {
+    props: {
+      movieList1: movieList1.data.results,
+      movieList2: movieList2.data.results,
+    },
+    revalidate: 30,
+  };
+}
 
 export default Movies;
