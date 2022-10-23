@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
@@ -33,9 +34,11 @@ export default function HomePage() {
                 </g>
               </svg>
             </div>
-            <button className='absolute top-0 right-0 mt-3 mr-5 bg-red-600 p-3 text-white hover:bg-red-700'>
-              Sign In
-            </button>
+            <Link href='/userSelection'>
+              <button className='absolute top-0 right-0 mt-3 mr-5 bg-red-600 p-3 text-white hover:bg-red-700'>
+                Sign In
+              </button>
+            </Link>
             <div className='space-y-5'>
               <p className='flex flex-col items-center text-5xl font-bold text-white'>
                 <span>
@@ -56,9 +59,11 @@ export default function HomePage() {
                   placeholder='Email address'
                   className='w-3/4 p-4 focus:outline-none focus:ring-1 focus:ring-blue-300'
                 />
-                <button className='text-l bg-red-600 p-4 font-semibold text-white hover:bg-red-700'>
-                  Get Started {'>'}
-                </button>
+                <Link href='/userSelection'>
+                  <button className='text-l bg-red-600 p-4 font-semibold text-white hover:bg-red-700'>
+                    Get Started {'>'}
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
